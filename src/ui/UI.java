@@ -189,11 +189,10 @@ public class UI {
 		GTramite gestor = new GTramite();
 		gestor.nuevoTramite(numero, nombre, tipo, estado);
 
-		ArrayList<Tramite> lista;
-		lista = gestor.getTramitesRegistrados();
-
-		out.println("Lista de tramites ======> " + lista);
-
+	}
+	
+	public static void realizarTramite() throws IOException {
+		// Tramite/Proceso > Pasos/Tarea > Finalizacion
 	}
 
 	public static void registrarCliente() throws IOException {
@@ -217,9 +216,6 @@ public class UI {
 		GCliente gestor = new GCliente();
 		gestor.registrarCliente(id, nombre, apellidos, tipoCliente, clave);
 
-		ArrayList<Cliente> lista = gestor.getClientesRegistradoss();
-
-		out.println("Lista clientes =====> " + lista);
 
 	}
 
