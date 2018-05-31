@@ -168,9 +168,6 @@ public class UI {
 		GUsuario gestor = new GUsuario();
 		gestor.registrarUsuario(id, nombre, apellidos, grupo, clave);
 
-		ArrayList<Usuario> lista = gestor.getUsuariosRegistrados();
-
-		out.println("Lista usuarios =====> " + lista);
 
 	}
 
