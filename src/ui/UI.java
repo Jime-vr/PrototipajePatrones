@@ -14,6 +14,7 @@ public class UI {
 		// iniciarSesion();
 		// registrarTramite();
 		// registrarUsuario();
+	    // realizarTramite();
 
 		boolean noSalir = false;
 		int opcion = 0;
