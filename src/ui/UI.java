@@ -14,7 +14,7 @@ public class UI {
 		// iniciarSesion();
 		// registrarTramite();
 		// registrarUsuario();
-	    // realizarTramite();
+		// realizarTramite();
 
 		boolean noSalir = false;
 		int opcion = 0;
@@ -36,9 +36,9 @@ public class UI {
 		out.println("1.  Registrar usuario.");
 		out.println("2.  Registrar tramite");
 		out.println("3.  Realizar tramite");
-		out.println("4.  Registrar cliente");
+		out.println("4.  Registrar estudiante");
 		out.println("5.  Listar empleados");
-		out.println("6.  Listar clientes");
+		out.println("6.  Listar estudiantes");
 		out.println("7.  Listar tramites");
 		out.println("8.  Salir.");
 		out.println();
@@ -72,15 +72,15 @@ public class UI {
 
 			break;
 
-		case 3: //Realizar tramite
-			
-			realizarTramite();
-			
-			break;
-			
-		case 4: // Registrar cliente
+		case 3: // Realizar tramite
 
-			registrarCliente();
+			realizarTramite();
+
+			break;
+
+		case 4: // Registrar estudiante
+
+			registrarEstudiante();
 
 			break;
 
@@ -90,15 +90,15 @@ public class UI {
 
 			break;
 
-		case 6: // Listar clientes
+		case 6: // Listar estudiantes
 
-			listarClientes();
+			listarEstudiantes();
 
 			break;
 
 		case 7: // Listar tramites
 
-			listarTramites() ;
+			listarTramites();
 
 			break;
 		case 8: // Salir
@@ -169,7 +169,6 @@ public class UI {
 		GUsuario gestor = new GUsuario();
 		gestor.registrarUsuario(id, nombre, apellidos, grupo, clave);
 
-
 	}
 
 	public static void registrarTramite() throws IOException {
@@ -191,32 +190,44 @@ public class UI {
 		gestor.nuevoTramite(numero, nombre, tipo, estado);
 
 	}
-	
+
 	public static void realizarTramite() throws IOException {
 		// Tramite/Proceso > Pasos/Tarea > Finalizacion
+
+		String tramite;
+
+		out.println("");
+		out.println(" --- TRAMITES --- ");
+		out.println(" 1. Solicitar constancia");
+		out.println(" 2. Solicitar carta");
+		out.println("");
+		out.println(" Digite el tipo de tramite que desea realizar:");
+		tramite = read.readLine();
+
+		tiposTramites(tramite);
+
 	}
 
-	public static void registrarCliente() throws IOException {
+	public static void registrarEstudiante() throws IOException {
 		String id;
 		String nombre;
 		String apellidos;
-		String tipoCliente;
+		String tipoEstudiante;
 		String clave;
 
 		out.println("Digite el numero de cedula:");
 		id = read.readLine();
 		out.println("Digite el nombre:");
 		nombre = read.readLine();
-		out.println("Digite los apellidos:");
+		out.println("Digite los apellidos del estudiante:");
 		apellidos = read.readLine();
-		out.println("Digite el tipo de cliente:");
-		tipoCliente = read.readLine();
-		out.println("Digite la clave del cliente:");
+		out.println("Digite el tipo de estudiante:");
+		tipoEstudiante = read.readLine();
+		out.println("Digite la clave del estudiante:");
 		clave = read.readLine();
 
-		GCliente gestor = new GCliente();
-		gestor.registrarCliente(id, nombre, apellidos, tipoCliente, clave);
-
+		GEstudiante gestor = new GEstudiante();
+		gestor.registrarEstudiante(id, nombre, apellidos, tipoEstudiante, clave);
 
 	}
 
@@ -258,24 +269,24 @@ public class UI {
 		}
 	}
 
-	public static void listarClientes() throws IOException {
-		GCliente gestor = new GCliente();
+	public static void listarEstudiantes() throws IOException {
+		GEstudiante gestor = new GEstudiante();
 
-		ArrayList<Cliente> lista = gestor.getClientesRegistradoss();
+		ArrayList<Estudiante> lista = gestor.getEstudiantesRegistrados();
 
 		String id;
 		String nombre;
 		String apellidos;
-		String tipoCliente;
+		String tipoEstudiante;
 
 		for (int i = 0; i < lista.size(); i++) {
 			id = lista.get(i).getId();
 			nombre = lista.get(i).getNombre();
 			apellidos = lista.get(i).getApellidos();
-			tipoCliente = lista.get(i).getTipoCliente();
+			tipoEstudiante = lista.get(i).getTipoEstudiante();
 
-			out.println("Cedula: " + id + " | Nombre : " + nombre + " " + apellidos + " | Tipo cliente: + "
-					+ tipoCliente + " |");
+			out.println("Cedula: " + id + " | Nombre : " + nombre + " " + apellidos + " | Tipo estudiante: + "
+					+ tipoEstudiante + " |");
 
 		}
 	}
@@ -301,5 +312,48 @@ public class UI {
 					+ "Estado tramite: " + estado + "|");
 		}
 
+	}
+
+	public static void tiposTramites(String tramite) throws IOException {
+
+		String carta;
+
+		switch (tramite) {
+		case "1":
+			constancia();
+			break;
+		case "2":
+			out.println("");
+			out.println("--- CARTAS ---");
+			out.println(" 1. Estudiante activo");
+			out.println(" 2. Conape");
+			out.println(" 3. Volver");
+			out.println("Digite la opcion que desea:");
+			carta = read.readLine();
+
+			if (carta.equals("1")) {
+				estudianteActivo();
+			} else if (carta.equals("2")) {
+				conape();
+			} else if (carta.equals("3")) {
+				mostrarMenu();
+			}
+
+		}
+	}
+
+	public static void constancia() throws IOException {
+		out.println("");
+		out.println("Usted ha solicitado una constancia... Espere un momento y se iniciara el tramite.");
+	}
+
+	public static void estudianteActivo() throws IOException {
+		out.println("");
+		out.println("Usted ha solicitado una carta de estudiante activo... Espere un momento y se iniciara el tramite.");
+	}
+
+	public static void conape() throws IOException {
+		out.println("");
+		out.println("Usted ha solicitado una carta de Conape... Espere un momento y se iniciara el tramite.");
 	}
 }

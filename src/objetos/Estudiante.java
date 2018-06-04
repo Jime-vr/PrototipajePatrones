@@ -1,23 +1,23 @@
 package objetos;
 
-public class Cliente {
+public class Estudiante {
 
 	private String id;
 	private String nombre;
 	private String apellidos;
-	private String tipoCliente;
+	private String tipoEstudiante;
 	private String clave;
 	
-	public Cliente() {
+	public Estudiante() {
 		
 	}
 
-	public Cliente(String id, String nombre, String apellidos, String tipoCliente, String clave) {
+	public Estudiante(String id, String nombre, String apellidos, String tipoEstudiante, String clave) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.tipoCliente = tipoCliente;
+		this.tipoEstudiante = tipoEstudiante;
 		this.clave = clave;
 	}
 
@@ -45,12 +45,12 @@ public class Cliente {
 		this.apellidos = apellidos;
 	}
 
-	public String getTipoCliente() {
-		return tipoCliente;
+	public String getTipoEstudiante() {
+		return tipoEstudiante;
 	}
 
-	public void setTipoCliente(String tipoCliente) {
-		this.tipoCliente = tipoCliente;
+	public void setTipoEstudiante(String tipoEstudiante) {
+		this.tipoEstudiante = tipoEstudiante;
 	}
 
 	public String getClave() {
@@ -63,7 +63,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", tipoCliente=" + tipoCliente
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", tipoEstudiante =" + tipoEstudiante
 				+ ", clave=" + clave + "]";
 	}
 
